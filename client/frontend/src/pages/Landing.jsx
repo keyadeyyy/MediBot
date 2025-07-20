@@ -16,7 +16,8 @@ const Landing = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [showForm, setShowForm] = useState(false);
-
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  
   useEffect(() => {
     const storedName = localStorage.getItem('name')
     if (storedName) {
@@ -43,7 +44,7 @@ const Landing = () => {
       setMedicine(null);
       const token = localStorage.getItem("token"); // Or sessionStorage, depending on where you stored it
       setLoading(true); 
-      const res = await axios.get(`http://localhost:5000/users/getMedicine?q=${query}`, {
+      const res = await axios.get(`${API_BASE_URL}/users/getMedicine?q=${query}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

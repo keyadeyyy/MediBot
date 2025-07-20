@@ -7,11 +7,13 @@ import './LinkBot.css'
 function LinkBot() {
   const [code, setCode] = useState("");
   const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     const fetchLinkCode = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5000/users/generateCode", {
+        const res = await axios.get(`${API_BASE_URL}/users/generateCode`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },

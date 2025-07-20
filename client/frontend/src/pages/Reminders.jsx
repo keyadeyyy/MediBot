@@ -8,11 +8,12 @@ const Reminders = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  
   const fetchReminders = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/users/getReminder", {
+      const response = await axios.get(`${API_BASE_URL}/users/getReminder`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReminders(response.data);
@@ -27,7 +28,7 @@ const Reminders = () => {
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/users/deleteReminder?id=${id}`, {
+      await axios.delete(`${API_BASE_URL}/users/deleteReminder?id=${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setReminders((prev) => prev.filter((r) => r.id !== id));

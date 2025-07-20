@@ -13,7 +13,8 @@ const ReminderForm = ({ medicine }) => {
   const [warning, setWarning] = useState("")
   const [error, setError] = useState("")
   const [successMessage, setSuccessMessage] = useState("");
-
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  
   useEffect(() => {
     if (!startTime) {
       setWarning("")
@@ -60,7 +61,7 @@ const ReminderForm = ({ medicine }) => {
      //Send to backend
     const token = localStorage.getItem("token"); // or sessionStorage
       try {
-      const res = await axios.post("http://localhost:5000/users/createReminder", reminderDetails, {
+      const res = await axios.post(`${API_BASE_URL}/users/createReminder`, reminderDetails, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

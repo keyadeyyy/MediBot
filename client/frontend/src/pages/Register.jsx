@@ -14,6 +14,8 @@ const Register = () => {
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const API_BASE_URL = import.meta.env.VITE_API_URL;
+  
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -28,7 +30,7 @@ const Register = () => {
     setSuccess("");
 
     try {
-      const response = await axios.post("http://localhost:5000/users/register", formData);
+      const response = await axios.post(`${API_BASE_URL}/users/register`, formData);
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("name", response.data.name); // if backend sends name
       setSuccess("Registration successful! ✅");
