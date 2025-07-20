@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './login.css'
+import './Login.css'
 import './LinkBot.css'
 function LinkBot() {
   const [code, setCode] = useState("");
