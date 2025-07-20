@@ -45,5 +45,5 @@ coverage/
 *.seed
 
 # Optional: logs / queue persistence (BullMQ if stored locally)
-queues/
+
 bullmq-data/
