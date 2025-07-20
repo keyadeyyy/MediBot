@@ -1,6 +1,5 @@
 // workers/reminderWorker.js
 const { Worker } = require('bullmq');
-require('dotenv').config();
 const bot = require('../../bot');
 const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
@@ -22,11 +21,7 @@ const worker = new Worker(
         await bot.telegram.sendMessage(telegramChatId, message);
         console.log(`✅ Reminder sent to ${telegramChatId}`);
         
-        // Mark as sent in DB (optional)
-        await prisma.reminder.updateMany({
-          where: { telegramChatId, medicine, dose, isActive: true },
-          data: { lastSentAt: new Date() },
-        });
+        
       } catch (err) {
         if (err.response?.error_code === 429) {
           // Telegram rate limit hit - retry after delay
