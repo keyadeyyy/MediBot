@@ -1,0 +1,146 @@
+/* Login.css */
+/* Login.css */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-page-bg {
+  height: 100vh; /* this ensures it fills the whole screen */
+  width: 250vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+
+.form {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  color: #333;
+  border: 1px solid #e9ecef;
+}
+
+.form h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: #495057;
+}
+
+.form form {
+  /* No special styling needed */
+}
+
+.form input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: white;
+  color: #495057;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.form input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form input::placeholder {
+  color: #6c757d;
+  font-weight: 400;
+}
+
+.form button {
+  width: 100%;
+  padding: 0.9rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-bottom: 1.5rem;
+}
+
+.form button:hover {
+  background: #0056b3;
+}
+
+.register-option {
+  text-align: center;
+}
+
+.register-option p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.register-link {
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+
+.register-link:hover {
+  color: #0056b3;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 0.8rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: 400;
+  border: 1px solid #f5c6cb;
+}
+
+/* Remove default br styling */
+.form br {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 500px) {
+  .form {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+  
+  .form h2 {
+    font-size: 1.6rem;
+  }
+}
+
+/* Focus accessibility */
+.form input:focus,
+.form button:focus,
+.register-link:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}

@@ -1,0 +1,183 @@
+/* LinkBot.css */
+.link-bot-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.link-bot-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(180deg); }
+}
+
+.link-bot-container h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.link-bot-container h2::after {
+  content: '🤖';
+  display: block;
+  font-size: 3rem;
+  margin-top: 0.5rem;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.link-bot-container p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.link-bot-container p strong {
+  color: #ffd700;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.link-bot-container a {
+  color: #ffd700;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: inline-block;
+  backdrop-filter: blur(10px);
+}
+
+.link-bot-container a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.link-bot-container code {
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #333 !important;
+  padding: 1rem 1.5rem !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  border-radius: 12px !important;
+  display: block !important;
+  margin: 1.5rem 0 !important;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  border: 2px solid #ffd700 !important;
+  position: relative !important;
+  z-index: 1 !important;
+  animation: pulse 2s ease-in-out infinite !important;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); }
+  50% { box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3); }
+}
+
+.link-bot-container code::before {
+  content: '📋';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+}
+
+.register-lin {
+  background: rgba(255, 255, 255, 0.2) !important;
+  color: white !important;
+  padding: 0.8rem 1.5rem !important;
+  border-radius: 25px !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-weight: 600 !important;
+  margin-top: 2rem !important;
+  display: inline-block !important;
+  backdrop-filter: blur(10px) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+.register-lin:hover {
+  background: rgba(255, 255, 255, 0.3) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2) !important;
+  border-color: #ffd700 !important;
+}
+
+.register-lin:active {
+  transform: translateY(-1px) !important;
+}
+
+/* Loading state styling */
+.link-bot-container p:last-of-type:not(.register-lin) {
+  font-style: italic;
+  opacity: 0.8;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .link-bot-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+  
+  .link-bot-container h2 {
+    font-size: 1.5rem;
+  }
+  
+  .link-bot-container code {
+    font-size: 1rem !important;
+    padding: 0.8rem 1rem !important;
+  }
+}
+
+/* Accessibility improvements */
+.link-bot-container:focus-within {
+  outline: 3px solid #ffd700;
+  outline-offset: 3px;
+}
+
+.register-lin:focus,
+.link-bot-container a:focus {
+  outline: 2px solid #ffd700;
+  outline-offset: 2px;
+}
