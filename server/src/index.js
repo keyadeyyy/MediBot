@@ -12,7 +12,7 @@ const prisma = new PrismaClient();
 
 const allowedOrigins = [
   "http://localhost:5000", // Vite dev server
-  "https://medibot-acpy.onrender.com/" // Replace with actual Render frontend URL
+  "https://medibot-frontend.onrender.com" // Replace with actual Render frontend URL
 ];
 
 app.use(
