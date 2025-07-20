@@ -1,0 +1,49 @@
+# ===================
+# Node.js (Backend)
+# ===================
+node_modules/
+.env
+.env.*
+dist/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Prisma artifacts
+prisma/dev.db
+prisma/dev.sqlite
+prisma/migrations/
+
+# Redis dump (if any saved to disk — unlikely)
+dump.rdb
+
+# ===================
+# React (Frontend)
+# ===================
+/client/node_modules/
+/client/build/
+/client/.env
+/client/.env.*
+
+# ===================
+# OS & Editor files
+# ===================
+.DS_Store
+Thumbs.db
+
+# IDE folders
+.vscode/
+.idea/
+
+# Optional: test coverage reports
+coverage/
+
+# Optional: local cache/temp/runtime files
+*.local
+*.pid
+*.seed
+
+# Optional: logs / queue persistence (BullMQ if stored locally)
+queues/
+bullmq-data/
