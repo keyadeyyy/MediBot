@@ -10,7 +10,17 @@ dotenv.config({ path: path.resolve(__dirname, "../.env") });
 const app = express();
 const prisma = new PrismaClient();
 
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5000", // Vite dev server
+  "https://medibot-acpy.onrender.com/" // Replace with actual Render frontend URL
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use('/users', require('../routes/userRoutes'))
 
