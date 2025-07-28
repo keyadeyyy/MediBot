@@ -1,8 +1,8 @@
 // workers/reminderWorker.js
 const { Worker } = require('bullmq');
 const bot = require('../../bot');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+const prisma = require('../utils/prisma');
+
 
 const connection = {
   host: process.env.REDIS_HOST,

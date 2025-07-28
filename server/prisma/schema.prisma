@@ -8,13 +8,13 @@ datasource db {
 }
 
 model User {
-  id         Int        @id @default(autoincrement())
-  name       String     
-  email      String     @unique
-  password   String     
-  telegramId String?     // optional
-  reminders  Reminder[]  // one-to-many relation (linked automatically)
-  telegramLinkRequests   TelegramLinkRequest[]
+  id                      Int                     @id @default(autoincrement())
+  name                    String
+  email                   String?                 @unique
+  password                String?
+  telegramId              String?                 @unique
+  reminders               Reminder[]              // one-to-many
+  telegramLinkRequests    TelegramLinkRequest[]
 }
 
 model Reminder {

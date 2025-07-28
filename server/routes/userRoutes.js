@@ -3,7 +3,7 @@ const { registerUser, loginUser, getMe, generateCode } = require("../controllers
 const {protect} = require("../middleware/authMiddleware")
 const {getMedicine} = require("../controllers/apiController")
 const { createReminder, fetchReminder, deleteReminder } = require("../controllers/reminderController");
-
+const {telegramLogin} = require("../controllers/authController")
 
 
 const router = express.Router()
@@ -11,11 +11,13 @@ const router = express.Router()
 
 router.post('/register', registerUser)
 router.post('/login', loginUser)
+router.post('/telegramLogin', telegramLogin);
 router.get('/getMe', protect, getMe)
 router.get('/generateCode', protect, generateCode)
 router.get('/getMedicine', protect, getMedicine)
 router.post('/createReminder', protect, createReminder);
 router.get('/getReminder', protect, fetchReminder);
 router.delete('/deleteReminder', protect, deleteReminder);
+
 
 module.exports = router;

@@ -1,8 +1,10 @@
-const { PrismaClient } = require('@prisma/client');
+
 const dayjs = require('dayjs');
 const reminderQueue = require('../queues/reminderQueue'); // path to your queue setup
 const {JobManager} = require('../utils/jobManager');
-const prisma = new PrismaClient();
+const prisma = require('../utils/prisma');
+
+
 
 const createReminder = async (req, res) => {
   try {

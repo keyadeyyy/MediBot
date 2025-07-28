@@ -1,16 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const axios = require('axios');
-const { createClient } = require('redis');
 
-const redisClient = createClient({
-  socket: {
-    host: process.env.REDIS_HOST,
-    port: parseInt(process.env.REDIS_PORT),
-  },
-  password: process.env.REDIS_PASSWORD,
-});
-
-redisClient.connect().catch(console.error);
 
 const getMedicine = asyncHandler(async (req, res) => {
   const query = req.query.q?.toLowerCase().trim(); // ✅ Normalize input

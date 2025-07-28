@@ -2,13 +2,14 @@ const express = require("express");
 const cors = require("cors");
 const path = require("path");
 const dotenv = require("dotenv");
-const { PrismaClient } = require("@prisma/client");
+const prisma = require('../utils/prisma');
+const rateLimit = require('express-rate-limit');
+
 
 
 
 dotenv.config({ path: path.resolve(__dirname, "../.env") });
 const app = express();
-const prisma = new PrismaClient();
 
 const allowedOrigins = [
   "http://localhost:5000", // Vite dev server
@@ -22,6 +23,16 @@ app.use(
   })
 );
 app.use(express.json());
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per window
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+app.use(limiter); // Apply rate limiter globally
+
 app.use('/users', require('../routes/userRoutes'))
 
 

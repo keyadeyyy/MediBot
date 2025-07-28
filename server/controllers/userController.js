@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
-const { PrismaClient } = require('@prisma/client');
 const { v4: uuidv4 } = require('uuid');
+const prisma = require('../utils/prisma');
+const generateToken = require('../utils/prisma')
 
-const prisma = new PrismaClient();
 
 const registerUser = asyncHandler(async (req, res) => {
 
@@ -86,9 +86,7 @@ const getMe = asyncHandler(async(req, res) => {
     res.json({message: "getMe called"})
 });
 
-const generateToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET, {expiresIn : '7d'})
-}
+
 const generateCode = asyncHandler(async(req, res) => {
    
 
