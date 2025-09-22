@@ -1,5 +1,5 @@
 // utils/JobManager.js
-const reminderQueue = require('../../queues/reminderQueue');
+const reminderQueue = require('../queues/reminderQueue');
 const { createClient } = require('redis');
 
 const redisClient = createClient({
