@@ -11,7 +11,7 @@ const app = express();
 const prisma = new PrismaClient();
 
 const allowedOrigins = [
-  "http://localhost:5000", // Vite dev server
+  "http://localhost:5173", // Vite dev server
   "https://medibot-frontend.onrender.com" // Replace with actual Render frontend URL
 ];
 

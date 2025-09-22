@@ -64,3 +64,6 @@ worker.on('failed', (job, err) => {
 worker.on('completed', (job) => {
   console.log(`✔️ ${job.name} completed for job ${job.id}`);
 });
+worker.on('ready', () => console.log('✅ Worker is ready and connected to Redis'));
+worker.on('active', (job) => console.log(`▶️ Job ${job.id} started: ${job.name}`));
+worker.on('stalled', (jobId) => console.warn(`⚠️ Job ${jobId} stalled`));
