@@ -3,6 +3,10 @@ const dayjs = require('dayjs');
 const reminderQueue = require('../queues/reminderQueue'); // path to your queue setup
 const {JobManager} = require('./jobManager.js');
 const prisma = new PrismaClient();
+const utc = require('dayjs/plugin/utc');
+const timezone = require('dayjs/plugin/timezone');
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 const createReminder = async (req, res) => {
   try {
@@ -123,7 +127,6 @@ function computeReminderTimestamps({
 }) {
   const timestamps = [];
 
-  const today = new Date();
   const [startHours, startMinutes] = startTime.split(":").map(Number);
   const [endHours, endMinutes] = endTime.split(":").map(Number);
 
@@ -134,7 +137,6 @@ function computeReminderTimestamps({
     return []; // Invalid input
   }
 
-  // Minutes between each reminder in the day window
   const totalIntervalMinutes = endMs - startMs;
   const gap = totalIntervalMinutes / (timesPerInterval - 1 || 1);
 
@@ -146,15 +148,16 @@ function computeReminderTimestamps({
       const hour = Math.floor(minutes / 60);
       const minute = Math.floor(minutes % 60);
 
-      const timestamp = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate() + day,
-        hour,
-        minute,
-        0,
-        0
-      );
+      // IST timestamp
+      const timestamp = dayjs()
+        .tz('Asia/Kolkata')           // Set to IST
+        .startOf('day')               // Today at 00:00 IST
+        .add(day, 'day')              // Add day offset
+        .hour(hour)
+        .minute(minute)
+        .second(0)
+        .millisecond(0)
+        .toDate();
 
       timestamps.push(timestamp);
     }
@@ -162,6 +165,7 @@ function computeReminderTimestamps({
 
   return timestamps;
 }
+
 
 
 const fetchReminder = async (req, res) => {
